@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Promoción Limitada!</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="imagen/logo.png">
+
+  <style>
+    .boton-video {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .boton-video:hover {
+      background-color: #0056b3;
+    }
+
+    .video-producto {
+      width: 100%;
+      max-width: 400px;
+      margin-top: 15px;
+      display: none;
+      border-radius: 12px;
+    }
+
+    .video-visible {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>🎧 Auriculares + Reloj a Precio Especial</h1>
+
+    <div class="promo-central">
+      <img src="imagen/Promocion.png" alt="Promoción Combo" class="promo-img">
+    </div>
+    <p>¡Aprovecha antes de que se acabe el tiempo!</p>
+
+    <div class="countdown">
+      <div><span id="countdown-days">00</span><br>Días</div>
+      <div><span id="countdown-hours">00</span><br>Horas</div>
+      <div><span id="countdown-minutes">00</span><br>Minutos</div>
+      <div><span id="countdown-seconds">00</span><br>Segundos</div>
+    </div>
+
+    <a href="https://wa.me/573155291245?text=Hola!%20Estoy%20interesado%20en%20la%20oferta" class="buy-button" target="_blank">Comprar Ahora por WhatsApp</a>
+
+    <div class="faq">
+      <h2>Preguntas Frecuentes</h2>
+
+      <div class="faq-question">¿Cómo hago el pedido?</div>
+      <div class="faq-answer">Solo haz clic en el botón de WhatsApp, escríbenos y te ayudamos con todo el proceso.</div>
+
+      <div class="faq-question">¿Cuánto demora el envío?</div>
+      <div class="faq-answer">Los envíos toman entre 3 y 5 días hábiles, dependiendo de tu ciudad.</div>
+
+      <div class="faq-question">¿Qué métodos de pago aceptan?</div>
+      <div class="faq-answer">Aceptamos pago contra entrega y transferencias bancarias.</div>
+    </div>
+  </div>
+
+  <div class="productos-contenedor">
+    <!-- Tarjeta Auriculares M25 -->
+    <div class="producto">
+      <img src="imagen/1.jpg" alt="Auriculares M25">
+      <h2>Auriculares Inalámbricos M25</h2>
+      <ul>
+        <li>Bluetooth 5.1 de alta velocidad</li>
+        <li>Batería duradera con estuche de carga</li>
+        <li>Resistentes al agua IPX5</li>
+        <li>Control táctil y reducción de ruido</li>
+      </ul>
+      <a href="https://wa.me/573155291245?text=Hola!%20Estoy%20interesado%20en%20los%20auriculares" class="boton-compra" target="_blank">Comprar ahora</a>
+      <br />
+       <a href="auriculares.html" class="boton-compra" style="background-color: #6c757d;">🔍 Ver Detalles</a>
+      <a href="#" class="boton-video" onclick="mostrarVideo('video-auriculares'); return false;">Ver video</a>
+      <video id="video-auriculares" class="video-producto" controls>
+        <source src="videos/auriculares.mp4" type="video/mp4">
+        Tu navegador no soporta video HTML5.
+      </video>
+    </div>
+
+    <!-- Tarjeta Reloj Inteligente -->
+    <div class="producto">
+      <img src="imagen/33.png" alt="Reloj Inteligente">
+      <h2>Reloj Inteligente Multifuncional</h2>
+      <ul>
+        <li>Monitor de ritmo cardíaco y sueño</li>
+        <li>Notificaciones de llamadas y mensajes</li>
+        <li>Modo deporte y contador de pasos</li>
+        <li>Compatible con Android y iOS</li>
+      </ul>
+      <a href="https://wa.me/573155291245?text=Hola!%20Estoy%20interesado%20en%20el%20reloj%20inteligente" class="boton-compra" target="_blank">Comprar ahora</a>
+      <br />
+       <a href="reloj.html" class="boton-compra" style="background-color: #6c757d;">🔍 Ver Detalles</a>
+      <a href="#" class="boton-video" onclick="mostrarVideo('video-reloj'); return false;">Ver video</a>
+      <video id="video-reloj" class="video-producto" controls>
+        <source src="videos/reloj.mp4" type="video/mp4">
+        Tu navegador no soporta video HTML5.
+      </video>
+  </div>
+
+  <script>
+    // CONTADOR REGRESIVO
+    const countdownDate = new Date().getTime() + (12 * 60 * 60 * 1000);
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown-days").textContent = days;
+      document.getElementById("countdown-hours").textContent = hours;
+      document.getElementById("countdown-minutes").textContent = minutes;
+      document.getElementById("countdown-seconds").textContent = seconds;
+
+      if (distance < 0) {
+        clearInterval(interval);
+        document.body.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: center; height: 100vh; text-align: center; background-color: #000; color: white; flex-direction: column;">
+            <h1>⚠️ La promoción ha finalizado</h1>
+            <p>Este sitio ya no está disponible. Por favor, vuelve a intentarlo más tarde.</p>
+          </div>
+        `;
+      }
+    };
+
+    const interval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // FAQ
+    const faqQuestions = document.querySelectorAll(".faq-question");
+    faqQuestions.forEach(q => {
+      q.addEventListener("click", () => {
+        const answer = q.nextElementSibling;
+        answer.classList.toggle("show");
+      });
+    });
+
+    // MOSTRAR/OCULTAR VIDEO
+    function mostrarVideo(id) {
+      const video = document.getElementById(id);
+      video.classList.toggle('video-visible');
+    }
+  </script>
+
+  <!-- Testimonios -->
+  <section class="testimonios">
+    <h2>Lo que dicen nuestros clientes</h2>
+    <div class="comentarios-contenedor">
+      <div class="comentario">
+        <p>"¡Excelente calidad y entrega rápida! El reloj es muy útil para monitorear mi actividad diaria."</p>
+        <span>- Laura G.</span>
+      </div>
+      <div class="comentario">
+        <p>"Los auriculares tienen un sonido nítido y la batería dura bastante. ¡Recomendado 100%!"</p>
+        <span>- Andrés M.</span>
+      </div>
+      <div class="comentario">
+        <p>"Muy buena atención por WhatsApp, hice mi pedido y llegó en 3 días a Medellín."</p>
+        <span>- Camilo R.</span>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
